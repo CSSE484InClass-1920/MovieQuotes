@@ -14,8 +14,16 @@ class MovieQuotesTableViewController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                        target: self,
+                                                        action: #selector(showAddQuoteDialog))
+
     movieQuotes.append(MovieQuote(quote: "I'll be back", movie: "The Terminator"))
     movieQuotes.append(MovieQuote(quote: "Yo Adrain!", movie: "Rocky"))
+  }
+
+  @objc func showAddQuoteDialog() {
+    
   }
 
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
