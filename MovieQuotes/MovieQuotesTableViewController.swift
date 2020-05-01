@@ -32,12 +32,12 @@ class MovieQuotesTableViewController: UITableViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     tableView.reloadData()
-    quotesListener = movieQuotesRef.addSnapshotListener({ (querySnapshot, error) in
+    quotesListener = movieQuotesRef.order(by: "created", descending: true).limit(to: 50).addSnapshotListener({ (querySnapshot, error) in
       if let querySnapshot = querySnapshot {
         self.movieQuotes.removeAll()
         querySnapshot.documents.forEach { (documentSnapshot) in
-          print(documentSnapshot.documentID)
-          print(documentSnapshot.data())
+//          print(documentSnapshot.documentID)
+//          print(documentSnapshot.data())
           self.movieQuotes.append(MovieQuote(documentSnapshot: documentSnapshot))
         }
         self.tableView.reloadData()
@@ -71,12 +71,15 @@ class MovieQuotesTableViewController: UITableViewController {
                                             style: UIAlertAction.Style.default) { (action) in
                                               let quoteTextField = alertController.textFields![0] as UITextField
                                               let movieTextField = alertController.textFields![1] as UITextField
-                                              //                                              print(quoteTextField.text!)
-                                              //                                              print(movieTextField.text!)
-                                              let newMovieQuote = MovieQuote(quote: quoteTextField.text!,
-                                                                             movie: movieTextField.text!)
-                                              self.movieQuotes.insert(newMovieQuote, at: 0)
-                                              self.tableView.reloadData()
+//                                              let newMovieQuote = MovieQuote(quote: quoteTextField.text!,
+//                                                                             movie: movieTextField.text!)
+//                                              self.movieQuotes.insert(newMovieQuote, at: 0)
+//                                              self.tableView.reloadData()
+                                              self.movieQuotesRef.addDocument(data: [
+                                                "quote": quoteTextField.text!,
+                                                "movie": movieTextField.text!,
+                                                "created": Timestamp.init()
+                                              ])
     })
     present(alertController, animated: true, completion: nil)
   }
