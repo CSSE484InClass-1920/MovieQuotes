@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>9356848057-u8n6dtlb1guep4g4v3f6cf5dgf3so469.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.9356848057-u8n6dtlb1guep4g4v3f6cf5dgf3so469</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDfA9vOzZOGpvuXQBaDbl8n2MMNLd8ogak</string>
+	<key>GCM_SENDER_ID</key>
+	<string>9356848057</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>edu.rose-hulman.fisherds.MovieQuotes</string>
+	<key>PROJECT_ID</key>
+	<string>ios-spring-2020-movie-quotes</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ios-spring-2020-movie-quotes.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:9356848057:ios:04bdae9a8112f9ac5ba468</string>
+	<key>DATABASE_URL</key>
+	<string>https://ios-spring-2020-movie-quotes.firebaseio.com</string>
+</dict>
+</plist>
