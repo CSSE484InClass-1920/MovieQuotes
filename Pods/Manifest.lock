@@ -71,11 +71,13 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.5.0)
+  - Rosefire (3.0.0beta)
 
 DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Firestore
+  - Rosefire (from `https://ada.csse.rose-hulman.edu/rosefire/ios-sdk.git`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -96,6 +98,15 @@ SPEC REPOS:
     - nanopb
     - Protobuf
 
+EXTERNAL SOURCES:
+  Rosefire:
+    :git: https://ada.csse.rose-hulman.edu/rosefire/ios-sdk.git
+
+CHECKOUT OPTIONS:
+  Rosefire:
+    :commit: a7e348fb25e802890f2b9075a123fa3efd0a97f4
+    :git: https://ada.csse.rose-hulman.edu/rosefire/ios-sdk.git
+
 SPEC CHECKSUMS:
   BoringSSL: 60dd24df4af296bf41d78e5841dbb95d75f88c0d
   Firebase: d6861c2059d8c32d1e6dd8932e22ada346d90a3a
@@ -113,7 +124,8 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
+  Rosefire: 9cb4c5447b71302962bd0c2beca22f320689c326
 
-PODFILE CHECKSUM: 59e68db31df816012925a38d6e9d1ba1385f99f2
+PODFILE CHECKSUM: f4dbb4bcbcfe2db24c4f74e038ec464456f5c54f
 
 COCOAPODS: 1.5.0
