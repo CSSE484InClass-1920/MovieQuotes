@@ -73,15 +73,14 @@ class LoginViewController: UIViewController {
       print("Result = \(result!.email!)")
       print("Result = \(result!.group!)")
 
-
-
-//      Auth.auth().signIn(withCustomToken: result!.token) { (authResult, error) in
-//        if let error = error {
-//          print("Firebase sign in error! \(error)")
-//          return
-//        }
-//        // User is signed in using Firebase!
-//      }
+      Auth.auth().signIn(withCustomToken: result!.token) { (authResult, error) in
+        if let error = error {
+          print("Firebase sign in error! \(error)")
+          return
+        }
+        // User is signed in using Firebase!
+        self.performSegue(withIdentifier: self.showListSegueIndentifier, sender: self)
+      }
     }
 
   }
