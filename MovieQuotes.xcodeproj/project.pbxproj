@@ -17,6 +17,7 @@
 		FD6F69BB2458AA6D00FABEB0 /* MovieQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6F69BA2458AA6D00FABEB0 /* MovieQuote.swift */; };
 		FD6F69BD2458B74E00FABEB0 /* MovieQuoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6F69BC2458B74E00FABEB0 /* MovieQuoteDetailViewController.swift */; };
 		FD6F69C1245C74DC00FABEB0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD6F69C0245C74DC00FABEB0 /* GoogleService-Info.plist */; };
+		FDCA2B37246335DF009FE683 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCA2B36246335DF009FE683 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		FD6F69BA2458AA6D00FABEB0 /* MovieQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuote.swift; sourceTree = "<group>"; };
 		FD6F69BC2458B74E00FABEB0 /* MovieQuoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuoteDetailViewController.swift; sourceTree = "<group>"; };
 		FD6F69C0245C74DC00FABEB0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FDCA2B36246335DF009FE683 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				FD6F69B82458A88700FABEB0 /* MovieQuotesTableViewController.swift */,
 				FD6F69BA2458AA6D00FABEB0 /* MovieQuote.swift */,
 				FD6F69BC2458B74E00FABEB0 /* MovieQuoteDetailViewController.swift */,
+				FDCA2B36246335DF009FE683 /* LoginViewController.swift */,
 			);
 			path = MovieQuotes;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDCA2B37246335DF009FE683 /* LoginViewController.swift in Sources */,
 				FD6F69A12458A26400FABEB0 /* AppDelegate.swift in Sources */,
 				FD6F69BD2458B74E00FABEB0 /* MovieQuoteDetailViewController.swift in Sources */,
 				FD6F69BB2458AA6D00FABEB0 /* MovieQuote.swift in Sources */,
@@ -383,7 +387,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TGL44JG796;
 				INFOPLIST_FILE = MovieQuotes/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.rose-hulman.fisherds.MovieQuotes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -399,7 +406,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TGL44JG796;
 				INFOPLIST_FILE = MovieQuotes/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.rose-hulman.fisherds.MovieQuotes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

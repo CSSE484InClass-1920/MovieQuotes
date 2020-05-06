@@ -82,7 +82,6 @@ class MovieQuotesTableViewController: UITableViewController {
 //    try Auth.auth().signOut()
 //    } catch {
 //      print("Sign out error")
-//
 //    }
 
     if (Auth.auth().currentUser == nil) {

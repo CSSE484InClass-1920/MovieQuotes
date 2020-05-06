@@ -7,6 +7,66 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="Dca-F5-La9">
+            <objects>
+                <viewController id="e5Q-Kk-nIR" customClass="LoginViewController" customModule="MovieQuotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CdQ-QP-yS5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="W9X-7n-0tk">
+                                <rect key="frame" x="20" y="138" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="email"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TzJ-cU-6Gy">
+                                <rect key="frame" x="20" y="202" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Jz-b2-cRs">
+                                <rect key="frame" x="20" y="269" width="113" height="30"/>
+                                <state key="normal" title="Sign in new user"/>
+                                <connections>
+                                    <action selector="pressedSignInNewUser:" destination="e5Q-Kk-nIR" eventType="touchUpInside" id="B1z-Ty-7ZD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8rc-vP-mDB">
+                                <rect key="frame" x="261" y="269" width="133" height="30"/>
+                                <state key="normal" title="Log in existing user"/>
+                                <connections>
+                                    <action selector="pressedLogInExistingUser:" destination="e5Q-Kk-nIR" eventType="touchUpInside" id="f3T-nf-NvG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="T0k-4y-WEz" firstAttribute="trailing" secondItem="TzJ-cU-6Gy" secondAttribute="trailing" constant="20" id="4Cm-gE-WPE"/>
+                            <constraint firstItem="W9X-7n-0tk" firstAttribute="top" secondItem="T0k-4y-WEz" secondAttribute="top" constant="50" id="5HW-Uv-q6C"/>
+                            <constraint firstItem="T0k-4y-WEz" firstAttribute="trailing" secondItem="W9X-7n-0tk" secondAttribute="trailing" constant="20" id="DEP-w0-Q3K"/>
+                            <constraint firstItem="8Jz-b2-cRs" firstAttribute="top" secondItem="TzJ-cU-6Gy" secondAttribute="bottom" constant="33" id="IbS-Nd-oK0"/>
+                            <constraint firstItem="8rc-vP-mDB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8Jz-b2-cRs" secondAttribute="trailing" constant="8" symbolic="YES" id="JRQ-MY-V4b"/>
+                            <constraint firstItem="8rc-vP-mDB" firstAttribute="top" secondItem="TzJ-cU-6Gy" secondAttribute="bottom" constant="33" id="QvU-sj-iUf"/>
+                            <constraint firstItem="8Jz-b2-cRs" firstAttribute="leading" secondItem="T0k-4y-WEz" secondAttribute="leading" constant="20" id="d0m-07-Sz4"/>
+                            <constraint firstItem="W9X-7n-0tk" firstAttribute="leading" secondItem="T0k-4y-WEz" secondAttribute="leading" constant="20" id="dq8-bJ-izp"/>
+                            <constraint firstItem="TzJ-cU-6Gy" firstAttribute="leading" secondItem="T0k-4y-WEz" secondAttribute="leading" constant="20" id="e8j-Gg-QEC"/>
+                            <constraint firstItem="TzJ-cU-6Gy" firstAttribute="top" secondItem="W9X-7n-0tk" secondAttribute="bottom" constant="30" id="em0-dY-0l1"/>
+                            <constraint firstItem="T0k-4y-WEz" firstAttribute="trailing" secondItem="8rc-vP-mDB" secondAttribute="trailing" constant="20" id="zkV-px-VJO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="T0k-4y-WEz"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="BuN-tF-GDS"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="W9X-7n-0tk" id="ywj-to-I1D"/>
+                        <outlet property="passwordTextField" destination="TzJ-cU-6Gy" id="jc0-c6-7p7"/>
+                        <segue destination="Cmf-Qa-Git" kind="show" identifier="ShowListSegue" id="0hO-xu-n7o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uto-Yp-g9t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-501" y="-158"/>
+        </scene>
         <!--Movie Quotes Table View Controller-->
         <scene sceneID="tRp-vD-2ag">
             <objects>
@@ -122,12 +182,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Cmf-Qa-Git" kind="relationship" relationship="rootViewController" id="NGH-Is-1WP"/>
+                        <segue destination="e5Q-Kk-nIR" kind="relationship" relationship="rootViewController" id="doD-qA-Ov7"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BcY-dB-xGx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-498.55072463768118" y="-158.03571428571428"/>
+            <point key="canvasLocation" x="-1454" y="-158"/>
         </scene>
     </scenes>
 </document>
