@@ -14,6 +14,7 @@ class MovieQuotesTableViewController: UITableViewController {
   let detailSegueIdentifier = "DetailSegue"
   var movieQuotesRef: CollectionReference!
   var movieQuoteListener: ListenerRegistration!
+  var authStateListenerHandle: AuthStateDidChangeListenerHandle!
   var movieQuotes = [MovieQuote]()
   var isShowingAllQuotes = true
   
@@ -50,7 +51,14 @@ class MovieQuotesTableViewController: UITableViewController {
                                               // Update the list
                                               self.startListening()
     })
-
+    alertController.addAction(UIAlertAction(title: "Sign Out",
+                                            style: UIAlertAction.Style.default) { (action) in
+                                              do {
+                                                try Auth.auth().signOut()
+                                              } catch {
+                                                print("Sign out error")
+                                              }
+    })
 
     alertController.addAction(UIAlertAction(title: "Cancel",
                                             style: .cancel,
@@ -62,35 +70,36 @@ class MovieQuotesTableViewController: UITableViewController {
     super.viewWillAppear(animated)
 
 
-//    if (Auth.auth().currentUser == nil) {
-//      // You are NOT signed in. So sign in anonymously.
-//      print("Signing in!")
-//      Auth.auth().signInAnonymously { (authResult, error) in
-//        if let error = error {
-//          print("Error with anonymous auth! \(error)")
-//          return
-//        }
-//        print("Success!  You signed in.  Well done!")
-//      }
-//    } else {
-//      // You are already signed in.
-//      print("You are already signed in.")
-//    }
+    //    if (Auth.auth().currentUser == nil) {
+    //      // You are NOT signed in. So sign in anonymously.
+    //      print("Signing in!")
+    //      Auth.auth().signInAnonymously { (authResult, error) in
+    //        if let error = error {
+    //          print("Error with anonymous auth! \(error)")
+    //          return
+    //        }
+    //        print("Success!  You signed in.  Well done!")
+    //      }
+    //    } else {
+    //      // You are already signed in.
+    //      print("You are already signed in.")
+    //    }
 
     // Use this code later!
-//    do {
-//    try Auth.auth().signOut()
-//    } catch {
-//      print("Sign out error")
-//    }
+    //    do {
+    //    try Auth.auth().signOut()
+    //    } catch {
+    //      print("Sign out error")
+    //    }
 
-    if (Auth.auth().currentUser == nil) {
-      print("There is no user.  Go back to the login page")
-    } else {
-      print("You are signed in already!")
+    authStateListenerHandle = Auth.auth().addStateDidChangeListener { (auth, user) in
+      if (Auth.auth().currentUser == nil) {
+        print("There is no user.  Go back to the login page")
+        self.navigationController?.popViewController(animated: true)
+      } else {
+        print("You are signed in.  Stay on this page")
+      }
     }
-
-
 
     //tableView.reloadData()
     startListening()
@@ -124,6 +133,7 @@ class MovieQuotesTableViewController: UITableViewController {
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     movieQuoteListener.remove()
+    Auth.auth().removeStateDidChangeListener(authStateListenerHandle)
   }
   
   
