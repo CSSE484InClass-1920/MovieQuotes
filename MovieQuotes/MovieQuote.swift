@@ -13,16 +13,13 @@ class MovieQuote {
   var quote: String
   var movie: String
   var id: String?
-
-  init(quote: String, movie: String) {
-    self.quote = quote
-    self.movie = movie
-  }
+  var author: String
 
   init(documentSnapshot: DocumentSnapshot) {
     self.id = documentSnapshot.documentID
     let data = documentSnapshot.data()!
     self.quote = data["quote"] as! String
     self.movie = data["movie"] as! String
+    self.author = data["author"] as! String
   }
 }
