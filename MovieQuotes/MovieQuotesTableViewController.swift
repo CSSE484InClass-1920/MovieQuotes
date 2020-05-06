@@ -14,8 +14,8 @@ class MovieQuotesTableViewController: UITableViewController {
   let detailSegueIdentifier = "DetailSegue"
   var movieQuotesRef: CollectionReference!
   var movieQuoteListener: ListenerRegistration!
-  
   var movieQuotes = [MovieQuote]()
+  var isShowingAllQuotes = true
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -25,9 +25,9 @@ class MovieQuotesTableViewController: UITableViewController {
                                                         style: UIBarButtonItem.Style.plain,
                                                         target: self,
                                                         action: #selector(showMenu))
-//    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
-//                                                        target: self,
-//                                                        action: #selector(showAddQuoteDialog))
+    //    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+    //                                                        target: self,
+    //                                                        action: #selector(showAddQuoteDialog))
     
     //    movieQuotes.append(MovieQuote(quote: "I'll be back", movie: "The Terminator"))
     //    movieQuotes.append(MovieQuote(quote: "Yo Adrain!", movie: "Rocky"))
@@ -35,17 +35,27 @@ class MovieQuotesTableViewController: UITableViewController {
   }
 
   @objc func showMenu() {
-        let alertController = UIAlertController(title: nil,
-                                                message: nil,
-                                                preferredStyle: .actionSheet)
-        alertController.addAction(UIAlertAction(title: "Create Quote",
-                                                style: UIAlertAction.Style.default) { (action) in
-                                                  self.showAddQuoteDialog()
-        })
-        alertController.addAction(UIAlertAction(title: "Cancel",
-                                                style: .cancel,
-                                                handler: nil))
-        present(alertController, animated: true, completion: nil)
+    let alertController = UIAlertController(title: nil,
+                                            message: nil,
+                                            preferredStyle: .actionSheet)
+    alertController.addAction(UIAlertAction(title: "Create Quote",
+                                            style: UIAlertAction.Style.default) { (action) in
+                                              self.showAddQuoteDialog()
+    })
+
+    alertController.addAction(UIAlertAction(title: self.isShowingAllQuotes ? "Show only my quotes" : "Show all quotes",
+                                            style: UIAlertAction.Style.default) { (action) in
+                                              // Toggle the show all vs show mine mode.
+                                              self.isShowingAllQuotes = !self.isShowingAllQuotes
+                                              // Update the list
+                                              self.startListening()
+    })
+
+
+    alertController.addAction(UIAlertAction(title: "Cancel",
+                                            style: .cancel,
+                                            handler: nil))
+    present(alertController, animated: true, completion: nil)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -66,12 +76,23 @@ class MovieQuotesTableViewController: UITableViewController {
     }
 
     //tableView.reloadData()
-    movieQuoteListener = movieQuotesRef.order(by: "created", descending: true).limit(to: 50).addSnapshotListener({ (querySnapshot, error) in
+    startListening()
+  }
+
+  func startListening() {
+    if (movieQuoteListener != nil) {
+      movieQuoteListener.remove()
+    }
+    var query = movieQuotesRef.order(by: "created", descending: true).limit(to: 50)
+    if (!isShowingAllQuotes) {
+      query = query.whereField("author", isEqualTo: Auth.auth().currentUser!.uid)
+    }
+    movieQuoteListener = query.addSnapshotListener({ (querySnapshot, error) in
       if let querySnapshot = querySnapshot {
         self.movieQuotes.removeAll()
         querySnapshot.documents.forEach { (documentSnapshot) in
-//          print(documentSnapshot.documentID)
-//          print(documentSnapshot.data())
+          //          print(documentSnapshot.documentID)
+          //          print(documentSnapshot.data())
           self.movieQuotes.append(MovieQuote(documentSnapshot: documentSnapshot))
         }
         self.tableView.reloadData()
@@ -81,6 +102,8 @@ class MovieQuotesTableViewController: UITableViewController {
       }
     })
   }
+
+
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     movieQuoteListener.remove()
@@ -105,10 +128,10 @@ class MovieQuotesTableViewController: UITableViewController {
                                             style: UIAlertAction.Style.default) { (action) in
                                               let quoteTextField = alertController.textFields![0] as UITextField
                                               let movieTextField = alertController.textFields![1] as UITextField
-//                                              let newMovieQuote = MovieQuote(quote: quoteTextField.text!,
-//                                                                             movie: movieTextField.text!)
-//                                              self.movieQuotes.insert(newMovieQuote, at: 0)
-//                                              self.tableView.reloadData()
+                                              //                                              let newMovieQuote = MovieQuote(quote: quoteTextField.text!,
+                                              //                                                                             movie: movieTextField.text!)
+                                              //                                              self.movieQuotes.insert(newMovieQuote, at: 0)
+                                              //                                              self.tableView.reloadData()
                                               self.movieQuotesRef.addDocument(data: [
                                                 "quote": quoteTextField.text!,
                                                 "movie": movieTextField.text!,
@@ -137,8 +160,8 @@ class MovieQuotesTableViewController: UITableViewController {
 
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-//      movieQuotes.remove(at: indexPath.row)
-//      tableView.reloadData()
+      //      movieQuotes.remove(at: indexPath.row)
+      //      tableView.reloadData()
       let movieQuoteToDelete = movieQuotes[indexPath.row]
       movieQuotesRef.document(movieQuoteToDelete.id!).delete()
     }
@@ -147,7 +170,7 @@ class MovieQuotesTableViewController: UITableViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == detailSegueIdentifier {
       if let indexPath = tableView.indexPathForSelectedRow {
-//        (segue.destination as! MovieQuoteDetailViewController).movieQuote = movieQuotes[indexPath.row]
+        //        (segue.destination as! MovieQuoteDetailViewController).movieQuote = movieQuotes[indexPath.row]
         (segue.destination as! MovieQuoteDetailViewController).movieQuoteRef = movieQuotesRef.document(movieQuotes[indexPath.row].id!)
       }
     }
