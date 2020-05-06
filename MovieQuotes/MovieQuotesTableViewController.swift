@@ -20,13 +20,32 @@ class MovieQuotesTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     navigationItem.leftBarButtonItem = editButtonItem
-    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "☰",
+                                                        style: UIBarButtonItem.Style.plain,
                                                         target: self,
-                                                        action: #selector(showAddQuoteDialog))
+                                                        action: #selector(showMenu))
+//    navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+//                                                        target: self,
+//                                                        action: #selector(showAddQuoteDialog))
     
     //    movieQuotes.append(MovieQuote(quote: "I'll be back", movie: "The Terminator"))
     //    movieQuotes.append(MovieQuote(quote: "Yo Adrain!", movie: "Rocky"))
     movieQuotesRef = Firestore.firestore().collection("MovieQuotes")
+  }
+
+  @objc func showMenu() {
+        let alertController = UIAlertController(title: nil,
+                                                message: nil,
+                                                preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "Create Quote",
+                                                style: UIAlertAction.Style.default) { (action) in
+                                                  self.showAddQuoteDialog()
+        })
+        alertController.addAction(UIAlertAction(title: "Cancel",
+                                                style: .cancel,
+                                                handler: nil))
+        present(alertController, animated: true, completion: nil)
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -68,7 +87,7 @@ class MovieQuotesTableViewController: UITableViewController {
   }
   
   
-  @objc func showAddQuoteDialog() {
+  func showAddQuoteDialog() {
     let alertController = UIAlertController(title: "Create a new movie quote",
                                             message: "",
                                             preferredStyle: .alert)
