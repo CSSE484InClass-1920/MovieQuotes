@@ -7,6 +7,9 @@ PODS:
   - BoringSSL/Interface (10.0.2)
   - Firebase/Analytics (5.0.1):
     - Firebase/Core
+  - Firebase/Auth (5.0.1):
+    - Firebase/CoreOnly
+    - FirebaseAuth (= 5.0.0)
   - Firebase/Core (5.0.1):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.0.0)
@@ -20,6 +23,9 @@ PODS:
     - FirebaseInstanceID (~> 3.0)
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
+  - FirebaseAuth (5.0.0):
+    - FirebaseCore (~> 5.0)
+    - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseCore (5.0.1):
     - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
   - FirebaseFirestore (0.12.1):
@@ -57,6 +63,7 @@ PODS:
   - gRPC/Main (1.12.0):
     - gRPC-Core (= 1.12.0)
     - gRPC-RxLibrary (= 1.12.0)
+  - GTMSessionFetcher/Core (1.4.0)
   - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -67,6 +74,7 @@ PODS:
 
 DEPENDENCIES:
   - Firebase/Analytics
+  - Firebase/Auth
   - Firebase/Firestore
 
 SPEC REPOS:
@@ -74,6 +82,7 @@ SPEC REPOS:
     - BoringSSL
     - Firebase
     - FirebaseAnalytics
+    - FirebaseAuth
     - FirebaseCore
     - FirebaseFirestore
     - FirebaseInstanceID
@@ -82,6 +91,7 @@ SPEC REPOS:
     - gRPC-Core
     - gRPC-ProtoRPC
     - gRPC-RxLibrary
+    - GTMSessionFetcher
     - leveldb-library
     - nanopb
     - Protobuf
@@ -90,6 +100,7 @@ SPEC CHECKSUMS:
   BoringSSL: 60dd24df4af296bf41d78e5841dbb95d75f88c0d
   Firebase: d6861c2059d8c32d1e6dd8932e22ada346d90a3a
   FirebaseAnalytics: 19812b49fa5f283dd6b23edf8a14b5d477029ab8
+  FirebaseAuth: acbeef02fe7c3a26624e309849f3fe30c84115af
   FirebaseCore: cafc814b2d84fc8733f09e653041cc2165332ad7
   FirebaseFirestore: f686b8e83f3cf8bbc37db6e98e01029a14f01f55
   FirebaseInstanceID: 83e0040351565df711a5db3d8ebe5ea21aca998a
@@ -98,10 +109,11 @@ SPEC CHECKSUMS:
   gRPC-Core: 9696b220565b283e021cf2722d473a4a74b7622a
   gRPC-ProtoRPC: a1bd56fb1991a8dae4581250d7259eddabb66779
   gRPC-RxLibrary: 1ed5314e8b38cd6e55c9bfa048387136ae925ce9
+  GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
 
-PODFILE CHECKSUM: 89992e528a85b834f1825880108457f5a0c6d50d
+PODFILE CHECKSUM: 59e68db31df816012925a38d6e9d1ba1385f99f2
 
 COCOAPODS: 1.5.0
