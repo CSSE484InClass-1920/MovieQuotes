@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,7 @@
 		FD6F69BB2458AA6D00FABEB0 /* MovieQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6F69BA2458AA6D00FABEB0 /* MovieQuote.swift */; };
 		FD6F69BD2458B74E00FABEB0 /* MovieQuoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6F69BC2458B74E00FABEB0 /* MovieQuoteDetailViewController.swift */; };
 		FD6F69C1245C74DC00FABEB0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD6F69C0245C74DC00FABEB0 /* GoogleService-Info.plist */; };
+		FD922D6225A8D153006BF365 /* SideNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD922D6125A8D153006BF365 /* SideNavViewController.swift */; };
 		FDCA2B37246335DF009FE683 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCA2B36246335DF009FE683 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		FD6F69BA2458AA6D00FABEB0 /* MovieQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuote.swift; sourceTree = "<group>"; };
 		FD6F69BC2458B74E00FABEB0 /* MovieQuoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuoteDetailViewController.swift; sourceTree = "<group>"; };
 		FD6F69C0245C74DC00FABEB0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FD922D6125A8D153006BF365 /* SideNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideNavViewController.swift; sourceTree = "<group>"; };
 		FDCA2B36246335DF009FE683 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +101,7 @@
 				FD6F69BA2458AA6D00FABEB0 /* MovieQuote.swift */,
 				FD6F69BC2458B74E00FABEB0 /* MovieQuoteDetailViewController.swift */,
 				FDCA2B36246335DF009FE683 /* LoginViewController.swift */,
+				FD922D6125A8D153006BF365 /* SideNavViewController.swift */,
 			);
 			path = MovieQuotes;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD922D6225A8D153006BF365 /* SideNavViewController.swift in Sources */,
 				FDCA2B37246335DF009FE683 /* LoginViewController.swift in Sources */,
 				FD6F69A12458A26400FABEB0 /* AppDelegate.swift in Sources */,
 				FD6F69BD2458B74E00FABEB0 /* MovieQuoteDetailViewController.swift in Sources */,
