@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,11 @@
 		FD6F69BB2458AA6D00FABEB0 /* MovieQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6F69BA2458AA6D00FABEB0 /* MovieQuote.swift */; };
 		FD6F69BD2458B74E00FABEB0 /* MovieQuoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6F69BC2458B74E00FABEB0 /* MovieQuoteDetailViewController.swift */; };
 		FD6F69C1245C74DC00FABEB0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FD6F69C0245C74DC00FABEB0 /* GoogleService-Info.plist */; };
+		FD922D5825A787E0006BF365 /* SideNavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD922D5725A787E0006BF365 /* SideNavViewController.swift */; };
+		FD922D5A25A7C2CD006BF365 /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD922D5925A7C2CD006BF365 /* ProfilePageViewController.swift */; };
+		FD922D5C25A7F69F006BF365 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD922D5B25A7F69E006BF365 /* Constants.swift */; };
+		FD922D5E25A8A529006BF365 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD922D5D25A8A529006BF365 /* UserManager.swift */; };
+		FD922D6025A8ACDC006BF365 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD922D5F25A8ACDC006BF365 /* ImageUtils.swift */; };
 		FDCA2B37246335DF009FE683 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCA2B36246335DF009FE683 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +40,11 @@
 		FD6F69BA2458AA6D00FABEB0 /* MovieQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuote.swift; sourceTree = "<group>"; };
 		FD6F69BC2458B74E00FABEB0 /* MovieQuoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieQuoteDetailViewController.swift; sourceTree = "<group>"; };
 		FD6F69C0245C74DC00FABEB0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FD922D5725A787E0006BF365 /* SideNavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideNavViewController.swift; sourceTree = "<group>"; };
+		FD922D5925A7C2CD006BF365 /* ProfilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
+		FD922D5B25A7F69E006BF365 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FD922D5D25A8A529006BF365 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		FD922D5F25A8ACDC006BF365 /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		FDCA2B36246335DF009FE683 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +109,11 @@
 				FD6F69BA2458AA6D00FABEB0 /* MovieQuote.swift */,
 				FD6F69BC2458B74E00FABEB0 /* MovieQuoteDetailViewController.swift */,
 				FDCA2B36246335DF009FE683 /* LoginViewController.swift */,
+				FD922D5725A787E0006BF365 /* SideNavViewController.swift */,
+				FD922D5925A7C2CD006BF365 /* ProfilePageViewController.swift */,
+				FD922D5B25A7F69E006BF365 /* Constants.swift */,
+				FD922D5D25A8A529006BF365 /* UserManager.swift */,
+				FD922D5F25A8ACDC006BF365 /* ImageUtils.swift */,
 			);
 			path = MovieQuotes;
 			sourceTree = "<group>";
@@ -115,6 +130,7 @@
 				FD6F699A2458A26400FABEB0 /* Frameworks */,
 				FD6F699B2458A26400FABEB0 /* Resources */,
 				45F0535AFE66D6E22111DB7A /* [CP] Embed Pods Frameworks */,
+				9F2C6BDA863C02C469725437 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -178,37 +194,16 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MovieQuotes/Pods-MovieQuotes-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/Rosefire/Rosefire.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MovieQuotes/Pods-MovieQuotes-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rosefire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MovieQuotes/Pods-MovieQuotes-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MovieQuotes/Pods-MovieQuotes-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MovieQuotes/Pods-MovieQuotes-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		91777BE6A4B75675B10E6113 /* [CP] Check Pods Manifest.lock */ = {
@@ -229,6 +224,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		9F2C6BDA863C02C469725437 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MovieQuotes/Pods-MovieQuotes-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MovieQuotes/Pods-MovieQuotes-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MovieQuotes/Pods-MovieQuotes-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -236,12 +248,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD922D5E25A8A529006BF365 /* UserManager.swift in Sources */,
+				FD922D5825A787E0006BF365 /* SideNavViewController.swift in Sources */,
 				FDCA2B37246335DF009FE683 /* LoginViewController.swift in Sources */,
 				FD6F69A12458A26400FABEB0 /* AppDelegate.swift in Sources */,
 				FD6F69BD2458B74E00FABEB0 /* MovieQuoteDetailViewController.swift in Sources */,
 				FD6F69BB2458AA6D00FABEB0 /* MovieQuote.swift in Sources */,
 				FD6F69B92458A88700FABEB0 /* MovieQuotesTableViewController.swift in Sources */,
 				FD6F69A32458A26400FABEB0 /* SceneDelegate.swift in Sources */,
+				FD922D5A25A7C2CD006BF365 /* ProfilePageViewController.swift in Sources */,
+				FD922D5C25A7F69F006BF365 /* Constants.swift in Sources */,
+				FD922D6025A8ACDC006BF365 /* ImageUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -16,6 +16,12 @@ class MovieQuoteDetailViewController: UIViewController {
   var movieQuoteRef: DocumentReference!
   var movieQuoteListener: ListenerRegistration!
 
+
+  @IBOutlet weak var authorBox: UIStackView!
+  @IBOutlet weak var authorPhotoImageView: UIImageView!
+  @IBOutlet weak var authorNameLabel: UILabel!
+
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -37,11 +43,16 @@ class MovieQuoteDetailViewController: UIViewController {
       // Decide if we can edit or not!
       if (Auth.auth().currentUser!.uid == self.movieQuote?.author) {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.edit,
-                                                            target: self,
-                                                            action: #selector(self.showEditDialog))
+                                                                 target: self,
+                                                                 action: #selector(self.showEditDialog))
       } else {
         self.navigationItem.rightBarButtonItem = nil
       }
+
+      if let authorUid = self.movieQuote?.author {
+        UserManager.shared.beginListening(uid: authorUid, changeListener: self.updateAuthorBox)
+      }
+
       self.updateView()
     }
   }
@@ -52,41 +63,55 @@ class MovieQuoteDetailViewController: UIViewController {
   }
 
   @objc func showEditDialog() {
-        let alertController = UIAlertController(title: "Edit this movie quote",
-                                                message: "",
-                                                preferredStyle: .alert)
-        // Configure
-        alertController.addTextField { (textField) in
-          textField.placeholder = "Quote"
-          textField.text = self.movieQuote?.quote
-        }
-        alertController.addTextField { (textField) in
-          textField.placeholder = "Movie"
-          textField.text = self.movieQuote?.movie
-        }
-        alertController.addAction(UIAlertAction(title: "Cancel",
-                                                style: .cancel,
-                                                handler: nil))
-        alertController.addAction(UIAlertAction(title: "Submit",
-                                                style: UIAlertAction.Style.default) { (action) in
-                                                  let quoteTextField = alertController.textFields![0] as UITextField
-                                                  let movieTextField = alertController.textFields![1] as UITextField
-    //                                              print(quoteTextField.text!)
-    //                                              print(movieTextField.text!)
-//                                                  self.movieQuote?.quote = quoteTextField.text!
-//                                                  self.movieQuote?.movie = movieTextField.text!
-//                                                  self.updateView()
-                                                  self.movieQuoteRef.updateData([
-                                                    "quote": quoteTextField.text!,
-                                                    "movie": movieTextField.text!
-                                                  ])
-        })
-        present(alertController, animated: true, completion: nil)
+    let alertController = UIAlertController(title: "Edit this movie quote",
+                                            message: "",
+                                            preferredStyle: .alert)
+    // Configure
+    alertController.addTextField { (textField) in
+      textField.placeholder = "Quote"
+      textField.text = self.movieQuote?.quote
+    }
+    alertController.addTextField { (textField) in
+      textField.placeholder = "Movie"
+      textField.text = self.movieQuote?.movie
+    }
+    alertController.addAction(UIAlertAction(title: "Cancel",
+                                            style: .cancel,
+                                            handler: nil))
+    alertController.addAction(UIAlertAction(title: "Submit",
+                                            style: UIAlertAction.Style.default) { (action) in
+                                              let quoteTextField = alertController.textFields![0] as UITextField
+                                              let movieTextField = alertController.textFields![1] as UITextField
+                                              //                                              print(quoteTextField.text!)
+                                              //                                              print(movieTextField.text!)
+                                              //                                                  self.movieQuote?.quote = quoteTextField.text!
+                                              //                                                  self.movieQuote?.movie = movieTextField.text!
+                                              //                                                  self.updateView()
+                                              self.movieQuoteRef.updateData([
+                                                "quote": quoteTextField.text!,
+                                                "movie": movieTextField.text!
+                                              ])
+    })
+    present(alertController, animated: true, completion: nil)
   }
 
 
   func updateView() {
     quoteLabel.text = movieQuote?.quote
     movieLabel.text = movieQuote?.movie
+  }
+
+  func updateAuthorBox() {
+    print("Update the author box")
+    var hideAuthorBox = true
+    if !UserManager.shared.name.isEmpty {
+      authorNameLabel.text = UserManager.shared.name
+      hideAuthorBox = false
+    }
+    if !UserManager.shared.photoUrl.isEmpty {
+      ImageUtils.load(imageView: authorPhotoImageView, from: UserManager.shared.photoUrl)
+      hideAuthorBox = false
+    }
+    authorBox.isHidden = hideAuthorBox
   }
 }
