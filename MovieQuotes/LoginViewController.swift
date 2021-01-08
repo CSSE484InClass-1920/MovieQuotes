@@ -9,11 +9,13 @@
 import UIKit
 import Firebase
 import Rosefire
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
 
   @IBOutlet weak var emailTextField: UITextField!
   @IBOutlet weak var passwordTextField: UITextField!
+  @IBOutlet weak var signInButton: GIDSignInButton!
 
   let showListSegueIndentifier = "ShowListSegue"
   let REGISTRY_TOKEN = "0fd2e00c-00ef-4900-8376-d5c28f251414" // DONE go visit rosefire.csse.rose-hulman.edu to generate this!
@@ -22,6 +24,8 @@ class LoginViewController: UIViewController {
     super.viewDidLoad()
     emailTextField.placeholder = "Email"
     passwordTextField.placeholder = "Password"
+    GIDSignIn.sharedInstance()?.presentingViewController = self
+    signInButton.style = .wide
   }
 
   override func viewDidAppear(_ animated: Bool) {

@@ -20,7 +20,7 @@ class MovieQuotesTableViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    navigationItem.leftBarButtonItem = editButtonItem
+//    navigationItem.leftBarButtonItem = editButtonItem
 
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "☰",
                                                         style: UIBarButtonItem.Style.plain,
