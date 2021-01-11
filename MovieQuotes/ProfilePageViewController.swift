@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
 class ProfilePageViewController: UIViewController {
 
@@ -59,6 +60,33 @@ class ProfilePageViewController: UIViewController {
       ImageUtils.load(imageView: profilePhotoImageView, from: UserManager.shared.photoUrl)
     }
   }
+
+  func uploadImage(_ image: UIImage) {
+    if let imageData = ImageUtils.resize(image: image) {
+
+      let storageRef = Storage.storage().reference().child(kCollectionUsers).child(Auth.auth().currentUser!.uid)
+
+      let uploadTask = storageRef.putData(imageData, metadata: nil) { (metadata, error) in
+        if let error = error {
+          print("Error uploading image: \(error)")
+          return
+        }
+        print("Upload complete!")
+        storageRef.downloadURL { (url, error) in
+          if let error = error {
+            print("Error getting the download url: \(error)")
+            return
+          }
+          if let downloadURL = url {
+            print("Got the download url:  \(downloadURL)")
+            UserManager.shared.updatePhotoUrl(photoUrl: downloadURL.absoluteString)
+          }
+        }
+      }
+    } else {
+      print("Error getting image data")
+    }
+  }
 }
 
 
@@ -72,15 +100,12 @@ extension ProfilePageViewController: UIImagePickerControllerDelegate, UINavigati
 
     if let image = info[UIImagePickerController.InfoKey.editedImage] as! UIImage? {
       print("Using the edited image")
-      profilePhotoImageView.image = image
-
-      // TODO: Upload to Firestore!
+      //      profilePhotoImageView.image = image
+      uploadImage(image)
     } else if let image = info[UIImagePickerController.InfoKey.originalImage]  as! UIImage? {
       print("Using the original image")
-      profilePhotoImageView.image = image
-
-      // TODO: Upload to Firestore!
-
+      //      profilePhotoImageView.image = image
+      uploadImage(image)
     }
     picker.dismiss(animated: true)
   }

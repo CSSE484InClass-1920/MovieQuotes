@@ -28,7 +28,6 @@ class LoginViewController: UIViewController {
     passwordTextField.placeholder = "Password"
     GIDSignIn.sharedInstance()?.presentingViewController = self
     signInButton.style = .wide
-    rosefireName = nil
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -37,6 +36,7 @@ class LoginViewController: UIViewController {
       print("Someone is already signed in!  Just move on!")
       self.performSegue(withIdentifier: self.showListSegueIndentifier, sender: self)
     }
+    rosefireName = nil
   }
 
   @IBAction func pressedSignInNewUser(_ sender: Any) {
