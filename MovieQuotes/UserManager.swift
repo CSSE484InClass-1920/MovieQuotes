@@ -52,6 +52,7 @@ class UserManager {
 
   // Read
   func beginListening(uid: String, changeListener: (() -> Void)?) {
+    stopListening()
     let userRef = _collectionRef.document(uid)
     userRef.addSnapshotListener { (documentSnapshot, error) in
       if let error = error {

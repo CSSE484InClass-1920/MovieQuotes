@@ -16,6 +16,12 @@ class MovieQuoteDetailViewController: UIViewController {
   var movieQuoteRef: DocumentReference!
   var movieQuoteListener: ListenerRegistration!
 
+
+  @IBOutlet weak var authorBox: UIStackView!
+  @IBOutlet weak var authorProfilePhotoImageView: UIImageView!
+  @IBOutlet weak var authorNameLabel: UILabel!
+
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -23,6 +29,7 @@ class MovieQuoteDetailViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    authorBox.isHidden = true
     //updateView()
     movieQuoteListener = movieQuoteRef.addSnapshotListener { (documentSnapshot, error) in
       if let error = error {
@@ -37,11 +44,16 @@ class MovieQuoteDetailViewController: UIViewController {
       // Decide if we can edit or not!
       if (Auth.auth().currentUser!.uid == self.movieQuote?.author) {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.edit,
-                                                            target: self,
-                                                            action: #selector(self.showEditDialog))
+                                                                 target: self,
+                                                                 action: #selector(self.showEditDialog))
       } else {
         self.navigationItem.rightBarButtonItem = nil
       }
+
+      // Get the User object for this author.
+      UserManager.shared.beginListening(uid: self.movieQuote!.author,
+                                        changeListener: self.updateAuthorBox)
+
       self.updateView()
     }
   }
@@ -52,41 +64,54 @@ class MovieQuoteDetailViewController: UIViewController {
   }
 
   @objc func showEditDialog() {
-        let alertController = UIAlertController(title: "Edit this movie quote",
-                                                message: "",
-                                                preferredStyle: .alert)
-        // Configure
-        alertController.addTextField { (textField) in
-          textField.placeholder = "Quote"
-          textField.text = self.movieQuote?.quote
-        }
-        alertController.addTextField { (textField) in
-          textField.placeholder = "Movie"
-          textField.text = self.movieQuote?.movie
-        }
-        alertController.addAction(UIAlertAction(title: "Cancel",
-                                                style: .cancel,
-                                                handler: nil))
-        alertController.addAction(UIAlertAction(title: "Submit",
-                                                style: UIAlertAction.Style.default) { (action) in
-                                                  let quoteTextField = alertController.textFields![0] as UITextField
-                                                  let movieTextField = alertController.textFields![1] as UITextField
-    //                                              print(quoteTextField.text!)
-    //                                              print(movieTextField.text!)
-//                                                  self.movieQuote?.quote = quoteTextField.text!
-//                                                  self.movieQuote?.movie = movieTextField.text!
-//                                                  self.updateView()
-                                                  self.movieQuoteRef.updateData([
-                                                    "quote": quoteTextField.text!,
-                                                    "movie": movieTextField.text!
-                                                  ])
-        })
-        present(alertController, animated: true, completion: nil)
+    let alertController = UIAlertController(title: "Edit this movie quote",
+                                            message: "",
+                                            preferredStyle: .alert)
+    // Configure
+    alertController.addTextField { (textField) in
+      textField.placeholder = "Quote"
+      textField.text = self.movieQuote?.quote
+    }
+    alertController.addTextField { (textField) in
+      textField.placeholder = "Movie"
+      textField.text = self.movieQuote?.movie
+    }
+    alertController.addAction(UIAlertAction(title: "Cancel",
+                                            style: .cancel,
+                                            handler: nil))
+    alertController.addAction(UIAlertAction(title: "Submit",
+                                            style: UIAlertAction.Style.default) { (action) in
+                                              let quoteTextField = alertController.textFields![0] as UITextField
+                                              let movieTextField = alertController.textFields![1] as UITextField
+                                              //                                              print(quoteTextField.text!)
+                                              //                                              print(movieTextField.text!)
+                                              //                                                  self.movieQuote?.quote = quoteTextField.text!
+                                              //                                                  self.movieQuote?.movie = movieTextField.text!
+                                              //                                                  self.updateView()
+                                              self.movieQuoteRef.updateData([
+                                                "quote": quoteTextField.text!,
+                                                "movie": movieTextField.text!
+                                              ])
+    })
+    present(alertController, animated: true, completion: nil)
   }
 
 
   func updateView() {
     quoteLabel.text = movieQuote?.quote
     movieLabel.text = movieQuote?.movie
+  }
+
+  func updateAuthorBox() {
+    print("Update the author box for \(UserManager.shared.name)")
+    authorBox.isHidden = !(UserManager.shared.name.count > 0 || UserManager.shared.photoUrl.count > 0)
+    if (UserManager.shared.name.count > 0) {
+      authorNameLabel.text = UserManager.shared.name
+    } else {
+      authorNameLabel.text = "unknown"
+    }
+    if (UserManager.shared.photoUrl.count > 0) {
+      ImageUtils.load(imageView: authorProfilePhotoImageView, from: UserManager.shared.photoUrl)
+    }
   }
 }
