@@ -51,8 +51,18 @@ class UserManager {
   }
 
   // Read
-  func beginListening(uid: String, changeListener: () -> Void) {
-
+  func beginListening(uid: String, changeListener: (() -> Void)?) {
+    let userRef = _collectionRef.document(uid)
+    userRef.addSnapshotListener { (documentSnapshot, error) in
+      if let error = error {
+        print("Error listening for user: \(error)")
+        return
+      }
+      if let documentSnapshot = documentSnapshot {
+        self._document = documentSnapshot
+        changeListener?()
+      }
+    }
   }
   func stopListening() {
     _userListener?.remove()
@@ -60,15 +70,19 @@ class UserManager {
 
   // Update
   func updateName(name: String) {
-
+    let userRef = _collectionRef.document(Auth.auth().currentUser!.uid)
+    userRef.updateData([
+      kKeyName: name
+    ])
   }
   func updatePhotoUrl(photoUrl: String) {
-
+    let userRef = _collectionRef.document(Auth.auth().currentUser!.uid)
+    userRef.updateData([
+      kKeyPhotoUrl: photoUrl
+    ])
   }
 
   // Delete - There is no delete!
-
-
 
   // Getters
   var name: String {

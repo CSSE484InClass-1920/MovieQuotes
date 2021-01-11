@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfilePageViewController: UIViewController {
 
@@ -16,6 +17,7 @@ class ProfilePageViewController: UIViewController {
 
 
   override func viewDidLoad() {
+    UserManager.shared.beginListening(uid: Auth.auth().currentUser!.uid, changeListener: updateView)
     displayNameTextField.addTarget(self,
                                    action: #selector(handleNameEdit),
                                    for: UIControl.Event.editingChanged)
@@ -23,12 +25,19 @@ class ProfilePageViewController: UIViewController {
 
   @objc func handleNameEdit() {
     if let name = displayNameTextField.text {
-      print("Send the name \(name) to the Firestore!")
+      print("Sent the name update \(name) to the Firestore!")
+      UserManager.shared.updateName(name: name)
     }
   }
 
   @IBAction func pressedEditPhoto(_ sender: Any) {
     print("TODO: Upload a photo!")
+  }
+
+  func updateView() {
+    displayNameTextField.text = UserManager.shared.name
+
+    // TODO: Figure out how to load the image for the ImageView asynchronously
   }
 
 }
