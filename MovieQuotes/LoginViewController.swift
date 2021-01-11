@@ -17,6 +17,8 @@ class LoginViewController: UIViewController {
   @IBOutlet weak var passwordTextField: UITextField!
   @IBOutlet weak var signInButton: GIDSignInButton!
 
+  var rosefireName: String?
+
   let showListSegueIndentifier = "ShowListSegue"
   let REGISTRY_TOKEN = "0fd2e00c-00ef-4900-8376-d5c28f251414" // DONE go visit rosefire.csse.rose-hulman.edu to generate this!
 
@@ -26,6 +28,7 @@ class LoginViewController: UIViewController {
     passwordTextField.placeholder = "Password"
     GIDSignIn.sharedInstance()?.presentingViewController = self
     signInButton.style = .wide
+    rosefireName = nil
   }
 
   override func viewDidAppear(_ animated: Bool) {
@@ -74,6 +77,7 @@ class LoginViewController: UIViewController {
       //print("Result = \(result!.token!)")
       print("Result = \(result!.username!)")
       print("Result = \(result!.name!)")
+      self.rosefireName = result!.name!
       print("Result = \(result!.email!)")
       print("Result = \(result!.group!)")
 
@@ -86,8 +90,19 @@ class LoginViewController: UIViewController {
         self.performSegue(withIdentifier: self.showListSegueIndentifier, sender: self)
       }
     }
-
   }
+
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == showListSegueIndentifier {
+      // Only segue so silly to check, but I did
+      print("Checking for user \(Auth.auth().currentUser!.uid)")
+      UserManager.shared.addNewUserMaybe(uid: Auth.auth().currentUser!.uid,
+                                         name: rosefireName ?? Auth.auth().currentUser!.displayName,
+                                         photoUrl: Auth.auth().currentUser!.photoURL?.absoluteString)
+    }
+  }
+
+
 
 
 }
