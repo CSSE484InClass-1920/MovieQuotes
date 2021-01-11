@@ -21,6 +21,7 @@
 		FD922D6425A8D8AD006BF365 /* ProfilePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD922D6325A8D8AD006BF365 /* ProfilePageViewController.swift */; };
 		FDB0ABD625A8DB5B002C0784 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB0ABD525A8DB5B002C0784 /* Constants.swift */; };
 		FDB0ABD825AC8E17002C0784 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB0ABD725AC8E17002C0784 /* UserManager.swift */; };
+		FDB0ABDA25AC9B00002C0784 /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB0ABD925AC9B00002C0784 /* ImageUtils.swift */; };
 		FDCA2B37246335DF009FE683 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCA2B36246335DF009FE683 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		FD922D6325A8D8AD006BF365 /* ProfilePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageViewController.swift; sourceTree = "<group>"; };
 		FDB0ABD525A8DB5B002C0784 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FDB0ABD725AC8E17002C0784 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		FDB0ABD925AC9B00002C0784 /* ImageUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		FDCA2B36246335DF009FE683 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +113,7 @@
 				FD922D6325A8D8AD006BF365 /* ProfilePageViewController.swift */,
 				FDB0ABD525A8DB5B002C0784 /* Constants.swift */,
 				FDB0ABD725AC8E17002C0784 /* UserManager.swift */,
+				FDB0ABD925AC9B00002C0784 /* ImageUtils.swift */,
 			);
 			path = MovieQuotes;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				FD922D6425A8D8AD006BF365 /* ProfilePageViewController.swift in Sources */,
 				FDB0ABD825AC8E17002C0784 /* UserManager.swift in Sources */,
 				FDB0ABD625A8DB5B002C0784 /* Constants.swift in Sources */,
+				FDB0ABDA25AC9B00002C0784 /* ImageUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

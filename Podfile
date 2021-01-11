@@ -16,6 +16,6 @@ target 'MovieQuotes' do
   pod 'GoogleSignIn'
 
   pod 'SideMenu'
-
+  pod 'Kingfisher', '~> 4.0'
 
 end

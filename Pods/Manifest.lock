@@ -80,6 +80,7 @@ PODS:
   - GTMSessionFetcher/Core (1.4.0)
   - GTMSessionFetcher/Full (1.4.0):
     - GTMSessionFetcher/Core (= 1.4.0)
+  - Kingfisher (4.10.1)
   - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -95,6 +96,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Firestore
   - GoogleSignIn
+  - Kingfisher (~> 4.0)
   - Rosefire (from `https://ada.csse.rose-hulman.edu/rosefire/ios-sdk.git`)
   - SideMenu
 
@@ -120,6 +122,7 @@ SPEC REPOS:
     - nanopb
     - Protobuf
   trunk:
+    - Kingfisher
     - SideMenu
 
 EXTERNAL SOURCES:
@@ -148,12 +151,13 @@ SPEC CHECKSUMS:
   gRPC-RxLibrary: 1ed5314e8b38cd6e55c9bfa048387136ae925ce9
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
   Rosefire: 9cb4c5447b71302962bd0c2beca22f320689c326
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
 
-PODFILE CHECKSUM: ad2ef9e2b0efe7bad2a001bd6eb7fb369201840a
+PODFILE CHECKSUM: c982e6f79f78ceb10dc909fe5f9acb49c6dd0424
 
 COCOAPODS: 1.10.0
