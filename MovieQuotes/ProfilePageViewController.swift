@@ -40,7 +40,17 @@ class ProfilePageViewController: UIViewController {
   }
 
   @IBAction func pressedEditPhoto(_ sender: Any) {
-    print("TODO: Upload a photo!")
+    let imagePickerController = UIImagePickerController()
+    imagePickerController.delegate = self
+    imagePickerController.allowsEditing = true
+    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+      print("You must be on a read device!")
+      imagePickerController.sourceType = .camera
+    } else {
+      print("You are probably on the simulator")
+      imagePickerController.sourceType = .photoLibrary
+    }
+    present(imagePickerController, animated: true, completion: nil)
   }
 
   func updateView() {
@@ -49,5 +59,32 @@ class ProfilePageViewController: UIViewController {
       ImageUtils.load(imageView: profilePhotoImageView, from: UserManager.shared.photoUrl)
     }
   }
+}
+
+
+extension ProfilePageViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+  func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+    picker.dismiss(animated: true)
+  }
+
+  func imagePickerController(_ picker: UIImagePickerController,
+                             didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+    if let image = info[UIImagePickerController.InfoKey.editedImage] as! UIImage? {
+      print("Using the edited image")
+      profilePhotoImageView.image = image
+
+      // TODO: Upload to Firestore!
+    } else if let image = info[UIImagePickerController.InfoKey.originalImage]  as! UIImage? {
+      print("Using the original image")
+      profilePhotoImageView.image = image
+
+      // TODO: Upload to Firestore!
+
+    }
+    picker.dismiss(animated: true)
+  }
+
 
 }
+
