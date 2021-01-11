@@ -63,9 +63,7 @@ class ProfilePageViewController: UIViewController {
 
   func uploadImage(_ image: UIImage) {
     if let imageData = ImageUtils.resize(image: image) {
-
       let storageRef = Storage.storage().reference().child(kCollectionUsers).child(Auth.auth().currentUser!.uid)
-
       let uploadTask = storageRef.putData(imageData, metadata: nil) { (metadata, error) in
         if let error = error {
           print("Error uploading image: \(error)")
@@ -83,6 +81,13 @@ class ProfilePageViewController: UIViewController {
           }
         }
       }
+
+//      uploadTask.observe(.progress) { (snapshot) in
+//        guard let progress = snapshot.progress else { return }
+//        print("Progress \(progress)")
+//      }
+
+
     } else {
       print("Error getting image data")
     }
