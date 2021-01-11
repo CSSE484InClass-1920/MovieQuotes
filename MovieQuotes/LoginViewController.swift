@@ -32,7 +32,6 @@ class LoginViewController: UIViewController {
 
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    roseFireName = nil
     if Auth.auth().currentUser != nil {
       print("Someone is already signed in!  Just move on!")
       self.performSegue(withIdentifier: self.showListSegueIndentifier, sender: self)
@@ -81,8 +80,7 @@ class LoginViewController: UIViewController {
       self.rosefireName = result!.name!
       print("Result = \(result!.email!)")
       print("Result = \(result!.group!)")
-      self.roseFireName = result!.name!
-
+      
       Auth.auth().signIn(withCustomToken: result!.token) { (authResult, error) in
         if let error = error {
           print("Firebase sign in error! \(error)")
@@ -103,17 +101,4 @@ class LoginViewController: UIViewController {
                                          photoUrl: Auth.auth().currentUser!.photoURL?.absoluteString)
     }
   }
-
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == showListSegueIndentifier {
-      // The only segue at present.
-      print("Checking for User object for \(Auth.auth().currentUser!.uid)")
-      UserManager.shared.addNewUserMaybe(uid: Auth.auth().currentUser!.uid,
-                                         name: self.roseFireName ?? Auth.auth().currentUser!.displayName,
-                                         photoUrl: Auth.auth().currentUser!.photoURL?.absoluteString)
-    }
-  }
-
-
-
 }
