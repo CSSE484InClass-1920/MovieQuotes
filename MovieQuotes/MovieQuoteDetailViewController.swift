@@ -103,15 +103,14 @@ class MovieQuoteDetailViewController: UIViewController {
   }
 
   func updateAuthorBox() {
-    print("Update the author box for \(UserManager.shared.name)")
-    authorBox.isHidden = !(UserManager.shared.name.count > 0 || UserManager.shared.photoUrl.count > 0)
-    if (UserManager.shared.name.count > 0) {
+    print("Update the author box")
+    authorBox.isHidden = UserManager.shared.name.isEmpty && UserManager.shared.photoUrl.isEmpty
+    if !UserManager.shared.name.isEmpty {
       authorNameLabel.text = UserManager.shared.name
-    } else {
-      authorNameLabel.text = "unknown"
     }
-    if (UserManager.shared.photoUrl.count > 0) {
+    if !UserManager.shared.photoUrl.isEmpty {
       ImageUtils.load(imageView: authorProfilePhotoImageView, from: UserManager.shared.photoUrl)
     }
   }
+
 }
